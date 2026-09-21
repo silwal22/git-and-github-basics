@@ -15,7 +15,17 @@ const baseProducts = [
 
 const productList = document.getElementById("product-list");
 const cartCountEl = document.getElementById("cart-count");
+const storyText = document.getElementById("story-text");
+const newStoryBtn = document.getElementById("new-story-btn");
 let cartCount = 0;
+
+const shopStories = [
+  "ShopStore began with a simple idea: make quality products easy to discover and affordable for everyday people. What started as a small online idea grew into a place where shoppers could find trusted essentials and exciting finds.",
+  "One rainy evening, a small team wanted to build a better shopping experience for busy families. They imagined an online marketplace where every product felt useful, stylish, and worth sharing, and ShopStore was born.",
+  "ShopStore was created by people who loved discovering great items and sharing them with friends. From gadgets to home essentials, the brand grew around the belief that shopping should feel inspiring, simple, and joyful.",
+  "The story behind ShopStore is rooted in curiosity and community. A group of creators wanted to bring creative products, practical everyday tools, and hidden gems into one welcoming marketplace for everyone.",
+  "ShopStore started as a passion project for people who wanted smarter shopping without the hassle. Over time, it became a trusted destination for discovering items that make daily life easier, more stylish, and more enjoyable."
+];
 
 function getRandomProducts() {
   const shuffled = [...baseProducts].sort(() => Math.random() - 0.5);
@@ -27,6 +37,8 @@ function getRandomProducts() {
 }
 
 function renderProducts() {
+  if (!productList) return;
+
   const products = getRandomProducts();
 
   productList.innerHTML = products.map(product => `
@@ -44,10 +56,19 @@ function renderProducts() {
   `).join("");
 }
 
+function generateRandomStory() {
+  if (!storyText) return;
+
+  const randomStory = shopStories[Math.floor(Math.random() * shopStories.length)];
+  storyText.textContent = randomStory;
+}
+
 document.addEventListener("click", (event) => {
   if (event.target.classList.contains("add-cart-btn")) {
     cartCount += 1;
-    cartCountEl.textContent = cartCount;
+    if (cartCountEl) {
+      cartCountEl.textContent = cartCount;
+    }
     const button = event.target;
     button.textContent = "Added";
     button.disabled = true;
@@ -56,6 +77,16 @@ document.addEventListener("click", (event) => {
       button.disabled = false;
     }, 800);
   }
+
+  if (event.target === newStoryBtn || event.target.closest("#new-story-btn")) {
+    generateRandomStory();
+  }
 });
 
-renderProducts();
+if (productList) {
+  renderProducts();
+}
+
+if (storyText) {
+  generateRandomStory();
+}

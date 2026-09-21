@@ -187,3 +187,54 @@ button {
   opacity: 0.9;
   transform: translateY(-1px);
 }
+
+.about-page {
+  padding: 4rem 0;
+}
+
+.about-card {
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 18px 35px rgba(15, 23, 42, 0.08);
+  padding: 2rem;
+  border: 1px solid #e5e7eb;
+}
+
+.about-page h1 {
+  font-size: clamp(2.2rem, 4vw, 3rem);
+  margin-bottom: 1rem;
+}
+
+.about-page p {
+  color: #4b5563;
+  line-height: 1.7;
+}
+
+.story-card {
+  background: linear-gradient(135deg, #f9fafb, #eef2ff);
+  border: 1px solid #dbeafe;
+  border-radius: 18px;
+  padding: 1.5rem;
+  margin-top: 2rem;
+  min-height: 160px;
+  display: flex;
+  align-items: center;
+}
+
+.story-card p {
+  font-size: 1.05rem;
+  color: #1f2937;
+}
+
+.new-story-btn {
+  margin-top: 1.5rem;
+  background: #111827;
+  color: white;
+  padding: 0.85rem 1.2rem;
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+.new-story-btn:hover {
+  opacity: 0.95;
+}
